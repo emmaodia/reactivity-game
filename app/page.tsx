@@ -13,7 +13,18 @@ import {
   decodeEventLog
 } from 'viem';
 
-// ============ UPDATE THIS WITH YOUR CONTRACT ADDRESS ============
+// TypeScript declaration for window.ethereum
+declare global {
+  interface Window {
+    ethereum?: {
+      request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
+      on?: (event: string, callback: (...args: unknown[]) => void) => void;
+      removeListener?: (event: string, callback: (...args: unknown[]) => void) => void;
+    };
+  }
+}
+
+// ============ GAME CONTRACT ADDRESS ============
 const GAME_ADDRESS = '0x5E779AC2c0E1Fd2D686fc7b8cdb2fc4D86239978';
 // ================================================================
 
